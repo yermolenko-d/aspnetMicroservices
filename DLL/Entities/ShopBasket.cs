@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DLL.Entities
 {
-    public class Basket
+    public class ShopBasket
     {
         public string UserName { get; set; }
         public List<BasketItem> Items { get; set; } = new List<BasketItem>();
@@ -23,11 +23,11 @@ namespace DLL.Entities
             }
         }
         
-        public Basket() 
+        public ShopBasket() 
         {
 
         }
-        public Basket(string userName)
+        public ShopBasket(string userName)
         {
             UserName = userName;
         }

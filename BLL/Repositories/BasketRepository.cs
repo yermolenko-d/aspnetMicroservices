@@ -19,16 +19,16 @@ namespace BLL.Repositories
             _redisCache = redisCache ?? throw new ArgumentNullException(nameof(redisCache));
         }
 
-        public async Task<Basket> GetBasket(string userName)
+        public async Task<ShopBasket> GetBasket(string userName)
         {
             var basket = await _redisCache.GetStringAsync(userName);
             
             if (string.IsNullOrEmpty(basket)) return null;
 
-            return JsonConvert.DeserializeObject<Basket>(basket);
+            return JsonConvert.DeserializeObject<ShopBasket>(basket);
         }
 
-        public async Task<Basket> UpdateBasket(Basket basket)
+        public async Task<ShopBasket> UpdateBasket(ShopBasket basket)
         {
             await _redisCache.SetStringAsync(basket.UserName, JsonConvert.SerializeObject(basket));
 
